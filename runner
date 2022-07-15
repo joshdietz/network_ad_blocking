@@ -1,0 +1,19 @@
+#!/bin/bash
+# create a shell script to install from the requirements.txt file
+
+echo "Installing requirements.txt"
+pip install -r requirements.txt
+echo "Done installing requirements.txt"
+
+cd ad_blocking
+
+# make django server migrations
+echo "Making django server migrations"
+python manage.py makemigrations
+
+# migrate
+echo "Migrating"
+python manage.py migrate
+
+echo "Running the django server"
+python manage.py runserver
